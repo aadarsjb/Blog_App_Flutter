@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/core/theme/app_pallete.dart';
 import 'package:myapp/features/auth/presentation/widgets/auth_field.dart';
 import 'package:myapp/features/auth/presentation/widgets/auth_gradient_button.dart';
 
@@ -18,19 +19,34 @@ class _SignupPageState extends State<SignupPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Sign Up!',
               style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 30),
-            AuthField(hintText: 'Name'),
+            const AuthField(hintText: 'Name'),
             const SizedBox(height: 15),
-            AuthField(hintText: 'Email'),
+            const AuthField(hintText: 'Email'),
             const SizedBox(height: 15),
-            AuthField(hintText: 'Password'),
+            const AuthField(hintText: 'Password'),
             const SizedBox(height: 20),
-            AuthGradientButton(),
-            // AuthField(hintText: 'Password'),
+            const AuthGradientButton(),
+            const SizedBox(height: 20),
+            RichText(
+              text: TextSpan(
+                text: "Don't have a account? ",
+                style: Theme.of(context).textTheme.titleMedium,
+                children: [
+                  TextSpan(
+                    text: 'Sign In',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: AppPallete.gradient2,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
