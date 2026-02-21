@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/core/theme/app_pallete.dart';
-import 'package:myapp/features/auth/presentation/pages/login_page.dart';
+import 'package:myapp/features/auth/presentation/pages/signup_page.dart';
 import 'package:myapp/features/auth/presentation/widgets/auth_field.dart';
 import 'package:myapp/features/auth/presentation/widgets/auth_gradient_button.dart';
 
-class SignupPage extends StatefulWidget {
-  const SignupPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<LoginPage> createState() => _LoginPageState();
 
   static MaterialPageRoute<dynamic> route() =>
-      MaterialPageRoute(builder: (context) => const SignupPage());
+      MaterialPageRoute(builder: (context) => const LoginPage());
 }
 
-class _SignupPageState extends State<SignupPage> {
-  final nameController = TextEditingController();
+class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -30,12 +29,10 @@ class _SignupPageState extends State<SignupPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                'Sign Up!',
+                'Sign in.',
                 style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 30),
-              AuthField(hintText: 'Name', controller: nameController),
-              const SizedBox(height: 15),
               AuthField(hintText: 'Email', controller: emailController),
               const SizedBox(height: 15),
               AuthField(
@@ -48,15 +45,15 @@ class _SignupPageState extends State<SignupPage> {
               const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context, LoginPage.route());
+                  Navigator.push(context, SignupPage.route());
                 },
                 child: RichText(
                   text: TextSpan(
-                    text: "Already have an account? ",
+                    text: "Don't have an account? ",
                     style: Theme.of(context).textTheme.titleMedium,
                     children: [
                       TextSpan(
-                        text: 'Sign In',
+                        text: 'Sign Up',
                         style: Theme.of(context).textTheme.titleMedium
                             ?.copyWith(
                               color: AppPallete.gradient2,
@@ -76,7 +73,6 @@ class _SignupPageState extends State<SignupPage> {
 
   @override
   void dispose() {
-    nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
